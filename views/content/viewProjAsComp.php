@@ -8,7 +8,8 @@ if ($component->is_main && $component->is_main != 1) {
 }
 echo '<div class="content">';
 if(isset($content->proj_id) && $content->proj_id!=null) {
-    echo CHtml::link();
+	$proj=Project::model()->findByPk($content->proj_id);
+    echo CHtml::link($proj->pname, array('content/project', 'pid' => $proj->pid));
 }
 echo "</div>";
 echo '<div class="clear"></div>';
