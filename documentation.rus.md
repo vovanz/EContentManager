@@ -13,12 +13,12 @@
 
 - В файле конфигурации прописать:
 <pre><code>
-'modules' =&gt array(
-	'EContentManager' =&gt array(
-		'files_path' =&gt '/files/', //путь для сохранения загруженных файлов
-		'class' =&gt 'ext.EContentManager.EContentManagerModule', //путь к классу модуля
-		'component_types' =&gt array(), //см. 1.2. Конфигурирование
-		'project_types' =&gt array(), //см. 1.2. Конфигурирование
+'modules' => array(
+	'EContentManager' => array(
+		'files_path' => '/files/', //путь для сохранения загруженных файлов
+		'class' => 'ext.EContentManager.EContentManagerModule', //путь к классу модуля
+		'component_types' => array(), //см. 1.2. Конфигурирование
+		'project_types' => array(), //см. 1.2. Конфигурирование
 	)
 )
 </code></pre>
@@ -27,26 +27,26 @@
 
  - В 'components\_types' нужно описать **все** типы компонентов, которые вы будете использовать.
 	<pre><code>
-	'component_types' =&gt array(
-		'&ltтип компонента&gt' =&gt array() //массив с конфигом компонента. Если конфигурировать нечего, то пустой массив. Описание стандартных типов компонентов ниже, в 1.4. Типы компонентов (Параметры).
+	'component_types' => array(
+		'<тип компонента>' => array() //массив с конфигом компонента. Если конфигурировать нечего, то пустой массив. Описание стандартных типов компонентов ниже, в 1.4. Типы компонентов (Параметры).
 		//...
 	)
 	</code></pre>
 	Пример:
 	<pre><code>
-	'component_types' =&gt array(
-	                'Text' =&gt array(
-	                    'allowed_html' =&gt 'p, span, br, a[href], strong, b, i, em, u, strike, ul, ol, li, h2, h3, h4, h5, h6, table[cellpadding|cellspacing], tr, td, dfn, dl, dt, dt',
-	                    'ckeditor' =&gt array(
-	                        'format_tags' =&gt 'p;h2;h3;h4;h5;h6',
-	                        'toolbar' =&gt array(
+	'component_types' => array(
+	                'Text' => array(
+	                    'allowed_html' => 'p, span, br, a[href], strong, b, i, em, u, strike, ul, ol, li, h2, h3, h4, h5, h6, table[cellpadding|cellspacing], tr, td, dfn, dl, dt, dt',
+	                    'ckeditor' => array(
+	                        'format_tags' => 'p;h2;h3;h4;h5;h6',
+	                        'toolbar' => array(
 	                            array('Source', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Format'),
 	                            array('NumberedList', 'BulletedList',),
 	                            array('Link', 'Unlink'),
 	                            array('Table'),
 	                        ),
-	                        'width' =&gt '1000px',
-	                        'height' =&gt '400px',
+	                        'width' => '1000px',
+	                        'height' => '400px',
 	                    ),
 	                ),
 				)
@@ -54,19 +54,19 @@
 
  - В 'project\_types' нужно описать типы проектов, которые вы будете использовать.
 	<pre><code>
-	'project_types' =&gt array(
-					'&ltid типа проекта&gt' =&gt array(
-						'max_count' =&gt &ltчисло&gt, //необязательный параметр. Можно ограничить максимальное количество проектов такого типа.
-						'component_types' =&gt array(
-							'&ltid типа компонента&gt' =&gt 'название типа компонента',
+	'project_types' => array(
+					'<id типа проекта>' => array(
+						'max_count' => <число>, //необязательный параметр. Можно ограничить максимальное количество проектов такого типа.
+						'component_types' => array(
+							'<id типа компонента>' => 'название типа компонента',
 							//...
 						),
-						'name' =&gt '&ltназвание типа проекта',
-						'main_components' =&gt array(
-							'&ltid главного компонента&gt' =&gt array('name' =&gt '&ltназвание главного компонента&gt', 'ctype' =&gt '&ltid типа компонента&gt', 'attributes' =&gt array(/*значения полей этого типа компонента по умолчанию*/)),
+						'name' => '<название типа проекта',
+						'main_components' => array(
+							'<id главного компонента>' => array('name' => '<название главного компонента>', 'ctype' => '<id типа компонента>', 'attributes' => array(/*значения полей этого типа компонента по умолчанию*/)),
 							//...
 						),
-						'type_config' =&gt array(
+						'type_config' => array(
 								//необязательный параметр. Можно переконфигурировать типы компонентов для этого проекта. Структура аналогична 'components_types' из конфигурации модуля.
 						),
 					),
@@ -74,22 +74,22 @@
 	</code></pre>
 	Пример:
 	<pre><code>
-	'project_types' =&gt array(
-	 'hd_site' =&gt array(
-		'component_types' =&gt array(
-			'Text' =&gt 'Текст',
-			'FileComponent' =&gt 'Файл',
-			'Gallery' =&gt 'Галерея',
-			'TextAndImage' =&gt 'Текст с картинкой',
-			'MyImage' =&gt 'Картинка',
-			'ProjAsComp' =&gt 'Проект',
+	'project_types' => array(
+	 'hd_site' => array(
+		'component_types' => array(
+			'Text' => 'Текст',
+			'FileComponent' => 'Файл',
+			'Gallery' => 'Галерея',
+			'TextAndImage' => 'Текст с картинкой',
+			'MyImage' => 'Картинка',
+			'ProjAsComp' => 'Проект',
 		),
-		'name' =&gt 'Сайты',
-		'main_components' =&gt array(
-			'image' =&gt array('name' =&gt 'Картинка', 'ctype' =&gt 'MyImage', 'attributes' =&gt array('fid' =&gt 0, 'title' =&gt '', 'annotation' =&gt '', 'alt' =&gt '')),
-			'text' =&gt array('name' =&gt 'Текст', 'ctype' =&gt 'Text', 'attributes' =&gt array('text' =&gt 'Текст')),
-			'background_color' =&gt array('name' =&gt 'Цвет фона', 'ctype' =&gt 'Color', 'attributes' =&gt array('code' =&gt 'FFFFFF')),
-			'title_color' =&gt array('name' =&gt 'Цвет заголовка', 'ctype' =&gt 'Color', 'attributes' =&gt array('code' =&gt '000000')),
+		'name' => 'Сайты',
+		'main_components' => array(
+			'image' => array('name' => 'Картинка', 'ctype' => 'MyImage', 'attributes' => array('fid' => 0, 'title' => '', 'annotation' => '', 'alt' => '')),
+			'text' => array('name' => 'Текст', 'ctype' => 'Text', 'attributes' => array('text' => 'Текст')),
+			'background_color' => array('name' => 'Цвет фона', 'ctype' => 'Color', 'attributes' => array('code' => 'FFFFFF')),
+			'title_color' => array('name' => 'Цвет заголовка', 'ctype' => 'Color', 'attributes' => array('code' => '000000')),
 		),
 	)
 	</code></pre>
