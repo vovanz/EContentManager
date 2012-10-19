@@ -5,8 +5,7 @@
 <script src="http://yandex.st/highlightjs/7.2/highlight.min.js"></script>
 <script> hljs.initHighlightingOnLoad();</script>
 </head>
-<body>
-<h1>Документация для расширения EContentManager</h1>
+<body><h1>Документация для расширения EContentManager</h1>
 
 <h2>0. Основные понятия</h2>
 
@@ -25,12 +24,12 @@
 </ul>
 
 <pre><code>
-'modules' => array(
-    'EContentManager' => array(
-        'files_path' => '/files/', //путь для сохранения загруженных файлов
-        'class' => 'ext.EContentManager.EContentManagerModule', //путь к классу модуля
-        'component_types' => array(), //см. 1.2. Конфигурирование
-        'project_types' => array(), //см. 1.2. Конфигурирование
+'modules' =&gt array(
+    'EContentManager' =&gt array(
+        'files_path' =&gt '/files/', //путь для сохранения загруженных файлов
+        'class' =&gt 'ext.EContentManager.EContentManagerModule', //путь к классу модуля
+        'component_types' =&gt array(), //см. 1.2. Конфигурирование
+        'project_types' =&gt array(), //см. 1.2. Конфигурирование
     )
 )
 </code></pre>
@@ -41,8 +40,8 @@
 <li><p>В 'components_types' нужно описать <strong>все</strong> типы компонентов, которые вы будете использовать.</p>
 
 <pre><code>
-'component_types' => array(
-    '<тип компонента>' => array() //массив с конфигом компонента. Если конфигурировать нечего, то пустой массив. Описание стандартных типов компонентов ниже, в 1.4. Типы компонентов (Параметры).
+'component_types' =&gt array(
+    '&ltтип компонента&gt' =&gt array() //массив с конфигом компонента. Если конфигурировать нечего, то пустой массив. Описание стандартных типов компонентов ниже, в 1.4. Типы компонентов (Параметры).
     //...
 )
 </code></pre>
@@ -50,19 +49,19 @@
 <p>Пример:</p>
 
 <pre><code>
-'component_types' => array(
-                'Text' => array(
-                    'allowed_html' => 'p, span, br, a[href], strong, b, i, em, u, strike, ul, ol, li, h2, h3, h4, h5, h6, table[cellpadding|cellspacing], tr, td, dfn, dl, dt, dt',
-                    'ckeditor' => array(
-                        'format_tags' => 'p;h2;h3;h4;h5;h6',
-                        'toolbar' => array(
+'component_types' =&gt array(
+                'Text' =&gt array(
+                    'allowed_html' =&gt 'p, span, br, a[href], strong, b, i, em, u, strike, ul, ol, li, h2, h3, h4, h5, h6, table[cellpadding|cellspacing], tr, td, dfn, dl, dt, dt',
+                    'ckeditor' =&gt array(
+                        'format_tags' =&gt 'p;h2;h3;h4;h5;h6',
+                        'toolbar' =&gt array(
                             array('Source', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Format'),
                             array('NumberedList', 'BulletedList',),
                             array('Link', 'Unlink'),
                             array('Table'),
                         ),
-                        'width' => '1000px',
-                        'height' => '400px',
+                        'width' =&gt '1000px',
+                        'height' =&gt '400px',
                     ),
                 ),
             )
@@ -70,19 +69,19 @@
 <li><p>В 'project_types' нужно описать типы проектов, которые вы будете использовать.</p>
 
 <pre><code>
-'project_types' => array(
-                '<id типа проекта>' => array(
-                    'max_count' => <число>, //необязательный параметр. Можно ограничить максимальное количество проектов такого типа.
-                    'component_types' => array(
-                        '<id типа компонента>' => 'название типа компонента',
+'project_types' =&gt array(
+                '&ltid типа проекта&gt' =&gt array(
+                    'max_count' =&gt &ltчисло&gt, //необязательный параметр. Можно ограничить максимальное количество проектов такого типа.
+                    'component_types' =&gt array(
+                        '&ltid типа компонента&gt' =&gt 'название типа компонента',
                         //...
                     ),
-                    'name' => '<название типа проекта>'<em></em>,
-                    'main_components' => array(
-                        '<id главного компонента>' => array('name' => '<название главного компонента>', 'ctype' => '<id типа компонента>', 'attributes' => array(/*значения полей этого типа компонента по умолчанию*/)),
+                    'name' =&gt '&ltназвание типа проекта',
+                    'main_components' =&gt array(
+                        '&ltid главного компонента&gt' =&gt array('name' =&gt '&ltназвание главного компонента&gt', 'ctype' =&gt '&ltid типа компонента&gt', 'attributes' =&gt array(/*значения полей этого типа компонента по умолчанию*/)),
                         //...
                     ),
-                    'type_config' => array(
+                    'type_config' =&gt array(
                             //необязательный параметр. Можно переконфигурировать типы компонентов для этого проекта. Структура аналогична 'components_types' из конфигурации модуля.
                     ),
                 ),
@@ -92,22 +91,22 @@
 <p>Пример:</p>
 
 <pre><code>
-'project_types' => array(
- 'hd_site' => array(
-    'component_types' => array(
-        'Text' => 'Текст',
-        'FileComponent' => 'Файл',
-        'Gallery' => 'Галерея',
-        'TextAndImage' => 'Текст с картинкой',
-        'MyImage' => 'Картинка',
-        'ProjAsComp' => 'Проект',
+'project_types' =&gt array(
+ 'hd_site' =&gt array(
+    'component_types' =&gt array(
+        'Text' =&gt 'Текст',
+        'FileComponent' =&gt 'Файл',
+        'Gallery' =&gt 'Галерея',
+        'TextAndImage' =&gt 'Текст с картинкой',
+        'MyImage' =&gt 'Картинка',
+        'ProjAsComp' =&gt 'Проект',
     ),
-    'name' => 'Сайты',
-    'main_components' => array(
-        'image' => array('name' => 'Картинка', 'ctype' => 'MyImage', 'attributes' => array('fid' => 0, 'title' => '', 'annotation' => '', 'alt' => '')),
-        'text' => array('name' => 'Текст', 'ctype' => 'Text', 'attributes' => array('text' => 'Текст')),
-        'background_color' => array('name' => 'Цвет фона', 'ctype' => 'Color', 'attributes' => array('code' => 'FFFFFF')),
-        'title_color' => array('name' => 'Цвет заголовка', 'ctype' => 'Color', 'attributes' => array('code' => '000000')),
+    'name' =&gt 'Сайты',
+    'main_components' =&gt array(
+        'image' =&gt array('name' =&gt 'Картинка', 'ctype' =&gt 'MyImage', 'attributes' =&gt array('fid' =&gt 0, 'title' =&gt '', 'annotation' =&gt '', 'alt' =&gt '')),
+        'text' =&gt array('name' =&gt 'Текст', 'ctype' =&gt 'Text', 'attributes' =&gt array('text' =&gt 'Текст')),
+        'background_color' =&gt array('name' =&gt 'Цвет фона', 'ctype' =&gt 'Color', 'attributes' =&gt array('code' =&gt 'FFFFFF')),
+        'title_color' =&gt array('name' =&gt 'Цвет заголовка', 'ctype' =&gt 'Color', 'attributes' =&gt array('code' =&gt '000000')),
     ),
 )
 </code></pre></li>
@@ -135,7 +134,7 @@
 </ul></li>
 </ul>
 
-<p>Классы моделей, отвечающих за основные поля компонентов наследуются от класса ComponentType, их название соответствует названию типа компонента, описание полей - см. комментарии.</p>
+<p>Классы моделей, отвечающих за основные поля компонентов наследуются от класса ComponentType, их название соответствует названию типа компонента, описание полей - см. класс модели.</p>
 
 <h3>1.4. Типы компонентов (Параметры)</h3>
 
@@ -189,5 +188,9 @@
 <h2>2. Расширение</h2>
 
 <h3>2.1. Изменение представлений</h3>
-</body><em><strong></strong></em>
+
+<h4>2.1.1. Предствления view</h4>
+
+<p>Представления view отвечают за отображение компонента на странице проекта. Названия файлов вида: <code>view&lt;id типа компонента&gt;</code>.</p>
+</body>
 </html>
