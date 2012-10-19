@@ -12,87 +12,87 @@
 - Папку с расширением EContentManager положить в папку extensions. Также необходимо подключить расширения eckeditor, EAjaxUplod, imagePresets и rusDate.
 
 - В файле конфигурации прописать:
-`
-'modules' => array(
-	'EContentManager' => array(
-		'files_path' => '/files/', //путь для сохранения загруженных файлов
-		'class' => 'ext.EContentManager.EContentManagerModule', //путь к классу модуля
-		'component_types' => array(), //см. 1.2. Конфигурирование
-		'project_types' => array(), //см. 1.2. Конфигурирование
+
+	'modules' => array(
+		'EContentManager' => array(
+			'files_path' => '/files/', //путь для сохранения загруженных файлов
+			'class' => 'ext.EContentManager.EContentManagerModule', //путь к классу модуля
+			'component_types' => array(), //см. 1.2. Конфигурирование
+			'project_types' => array(), //см. 1.2. Конфигурирование
+		)
 	)
-)
-`
+	
 
 ###1.2. Конфигурирование
 
  - В 'components\_types' нужно описать **все** типы компонентов, которые вы будете использовать.
-	`
-	'component_types' => array(
-		'<тип компонента>' => array() //массив с конфигом компонента. Если конфигурировать нечего, то пустой массив. Описание стандартных типов компонентов ниже, в 1.4. Типы компонентов (Параметры).
-		//...
-	)
-	`
+	
+		'component_types' => array(
+			'<тип компонента>' => array() //массив с конфигом компонента. Если конфигурировать нечего, то пустой массив. Описание стандартных типов компонентов ниже, в 1.4. Типы компонентов (Параметры).
+			//...
+		)
+	
 	Пример:
-	`
-	'component_types' => array(
-	                'Text' => array(
-	                    'allowed_html' => 'p, span, br, a[href], strong, b, i, em, u, strike, ul, ol, li, h2, h3, h4, h5, h6, table[cellpadding|cellspacing], tr, td, dfn, dl, dt, dt',
-	                    'ckeditor' => array(
-	                        'format_tags' => 'p;h2;h3;h4;h5;h6',
-	                        'toolbar' => array(
-	                            array('Source', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Format'),
-	                            array('NumberedList', 'BulletedList',),
-	                            array('Link', 'Unlink'),
-	                            array('Table'),
-	                        ),
-	                        'width' => '1000px',
-	                        'height' => '400px',
-	                    ),
-	                ),
-				)
-	`
+	
+		'component_types' => array(
+		                'Text' => array(
+		                    'allowed_html' => 'p, span, br, a[href], strong, b, i, em, u, strike, ul, ol, li, h2, h3, h4, h5, h6, table[cellpadding|cellspacing], tr, td, dfn, dl, dt, dt',
+		                    'ckeditor' => array(
+		                        'format_tags' => 'p;h2;h3;h4;h5;h6',
+		                        'toolbar' => array(
+		                            array('Source', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Format'),
+		                            array('NumberedList', 'BulletedList',),
+		                            array('Link', 'Unlink'),
+		                            array('Table'),
+		                        ),
+		                        'width' => '1000px',
+		                        'height' => '400px',
+		                    ),
+		                ),
+					)
+		
 
  - В 'project\_types' нужно описать типы проектов, которые вы будете использовать.
-	`
-	'project_types' => array(
-					'<id типа проекта>' => array(
-						'max_count' => <число>, //необязательный параметр. Можно ограничить максимальное количество проектов такого типа.
-						'component_types' => array(
-							'<id типа компонента>' => 'название типа компонента',
-							//...
+	
+		'project_types' => array(
+						'<id типа проекта>' => array(
+							'max_count' => <число>, //необязательный параметр. Можно ограничить максимальное количество проектов такого типа.
+							'component_types' => array(
+								'<id типа компонента>' => 'название типа компонента',
+								//...
+							),
+							'name' => '<название типа проекта',
+							'main_components' => array(
+								'<id главного компонента>' => array('name' => '<название главного компонента>', 'ctype' => '<id типа компонента>', 'attributes' => array(/*значения полей этого типа компонента по умолчанию*/)),
+								//...
+							),
+							'type_config' => array(
+									//необязательный параметр. Можно переконфигурировать типы компонентов для этого проекта. Структура аналогична 'components_types' из конфигурации модуля.
+							),
 						),
-						'name' => '<название типа проекта',
-						'main_components' => array(
-							'<id главного компонента>' => array('name' => '<название главного компонента>', 'ctype' => '<id типа компонента>', 'attributes' => array(/*значения полей этого типа компонента по умолчанию*/)),
-							//...
-						),
-						'type_config' => array(
-								//необязательный параметр. Можно переконфигурировать типы компонентов для этого проекта. Структура аналогична 'components_types' из конфигурации модуля.
-						),
-					),
-				)
-	`
+					)
+		
 	Пример:
-	`
-	'project_types' => array(
-	 'hd_site' => array(
-		'component_types' => array(
-			'Text' => 'Текст',
-			'FileComponent' => 'Файл',
-			'Gallery' => 'Галерея',
-			'TextAndImage' => 'Текст с картинкой',
-			'MyImage' => 'Картинка',
-			'ProjAsComp' => 'Проект',
-		),
-		'name' => 'Сайты',
-		'main_components' => array(
-			'image' => array('name' => 'Картинка', 'ctype' => 'MyImage', 'attributes' => array('fid' => 0, 'title' => '', 'annotation' => '', 'alt' => '')),
-			'text' => array('name' => 'Текст', 'ctype' => 'Text', 'attributes' => array('text' => 'Текст')),
-			'background_color' => array('name' => 'Цвет фона', 'ctype' => 'Color', 'attributes' => array('code' => 'FFFFFF')),
-			'title_color' => array('name' => 'Цвет заголовка', 'ctype' => 'Color', 'attributes' => array('code' => '000000')),
-		),
-	)
-	`
+	
+		'project_types' => array(
+		 'hd_site' => array(
+			'component_types' => array(
+				'Text' => 'Текст',
+				'FileComponent' => 'Файл',
+				'Gallery' => 'Галерея',
+				'TextAndImage' => 'Текст с картинкой',
+				'MyImage' => 'Картинка',
+				'ProjAsComp' => 'Проект',
+			),
+			'name' => 'Сайты',
+			'main_components' => array(
+				'image' => array('name' => 'Картинка', 'ctype' => 'MyImage', 'attributes' => array('fid' => 0, 'title' => '', 'annotation' => '', 'alt' => '')),
+				'text' => array('name' => 'Текст', 'ctype' => 'Text', 'attributes' => array('text' => 'Текст')),
+				'background_color' => array('name' => 'Цвет фона', 'ctype' => 'Color', 'attributes' => array('code' => 'FFFFFF')),
+				'title_color' => array('name' => 'Цвет заголовка', 'ctype' => 'Color', 'attributes' => array('code' => '000000')),
+			),
+		)
+		
 
 ###1.3. Описание моделей
 
