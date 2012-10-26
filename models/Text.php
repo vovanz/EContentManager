@@ -2,7 +2,7 @@
 
 class Text extends ComponentType {
 
-    public $text;
+    public $text; //текст (поле в БД)
 
     public static function model($classname = __CLASS__) {
         return parent::model($classname);

@@ -2,9 +2,9 @@
 
 class TextAndImage extends ComponentType {
 
-    public $image_pos;
-    public $text;
-    public $_image;
+    public $image_pos; //положение картинки (поле в БД)
+    public $text; //текст (поле в БД)
+    public $_image; //вспомогательное свойство
 
     public function afterConstruct() {
         parent::afterConstruct();

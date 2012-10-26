@@ -2,12 +2,17 @@
 
 class Component extends CActiveRecord {
 
-    public $pid;
-    public $cid;
-    public $cweight;
-    public $ctype;
-    public $is_main;
+    public $pid; // id проекта к которому принадлежит компонент
+    public $cid; // id компонента
+    public $cweight; // сортировочный вес компонента
+    public $ctype; // id типа компонента
+    public $is_main; // если это клавный компонент, то id главного компонента, иначе false
 
+    
+    /*
+	 * 
+	 * 
+	 */
     public function getType_config() {
         $type_config=Yii::app()->modules['EContentManager']['component_types'][$this->ctype];
         if(isset($this->pid) && isset(Yii::app()->modules['EContentManager']['project_types'][$this->project->ptype]['type_config'][$this->ctype])) {
