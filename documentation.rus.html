@@ -5,7 +5,8 @@
 <script src="http://yandex.st/highlightjs/7.2/highlight.min.js"></script>
 <script> hljs.initHighlightingOnLoad();</script>
 </head>
-<body><h1>Документация для расширения EContentManager</h1>
+<body>
+<h1>Документация для расширения EContentManager</h1>
 
 <p>Расширение EContentManager - для управления контентом. Весь контент состоит из проектов, каждый из которых состоит из компонентов. <br />
 У проекта могут быть главные компоненты, которые автоматически создаются при создании проекта.  </p>
@@ -18,14 +19,15 @@
 <li><p>Папку с расширением EContentManager положить в папку extensions. Также необходимо подключить расширения eckeditor, EAjaxUplod, imagePresets и rusDate.</p></li>
 <li><p>В файле конфигурации прописать:</p>
 
-<p>'modules' => array(
-    'EContentManager' => array(
-        'files<em>path' => '/files/', //путь для сохранения загруженных файлов
-        'class' => 'ext.EContentManager.EContentManagerModule', //путь к классу модуля
-        'component</em>types' => array(), //см. 1.2. Конфигурирование
-        'project_types' => array(), //см. 1.2. Конфигурирование
+<pre><code>'modules' =&gt; array(
+    'EContentManager' =&gt; array(
+        'files_path' =&gt; '/files/', //путь для сохранения загруженных файлов
+        'class' =&gt; 'ext.EContentManager.EContentManagerModule', //путь к классу модуля
+        'component_types' =&gt; array(), //см. 1.2. Конфигурирование
+        'project_types' =&gt; array(), //см. 1.2. Конфигурирование
     )
-)</p></li>
+)
+</code></pre></li>
 </ul>
 
 <h3>1.2. Конфигурирование</h3>

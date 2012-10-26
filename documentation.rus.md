@@ -10,15 +10,15 @@
 
 - В файле конфигурации прописать:
 
-	'modules' => array(
-		'EContentManager' => array(
-			'files_path' => '/files/', //путь для сохранения загруженных файлов
-			'class' => 'ext.EContentManager.EContentManagerModule', //путь к классу модуля
-			'component_types' => array(), //см. 1.2. Конфигурирование
-			'project_types' => array(), //см. 1.2. Конфигурирование
+		'modules' => array(
+			'EContentManager' => array(
+				'files_path' => '/files/', //путь для сохранения загруженных файлов
+				'class' => 'ext.EContentManager.EContentManagerModule', //путь к классу модуля
+				'component_types' => array(), //см. 1.2. Конфигурирование
+				'project_types' => array(), //см. 1.2. Конфигурирование
+			)
 		)
-	)
-	
+		
 
 ###1.2. Конфигурирование
 
